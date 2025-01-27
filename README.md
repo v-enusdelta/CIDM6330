@@ -1,2 +1,21 @@
-# CIDM6330
-SP25 Software Engineering class
+# Centralized Reporting System
+In this essay, I will discuss a business problem within the public health domain and propose a possible software system to solve the problem. I will also discuss possible system configurations and components necessary to fully realize this solution.
+## Problem
+Consider the following problem for a state public health agency: The agency has recently implemented a new internal organization strategic plan with goals, milestones, and performance measures for the next five years. All internal divisions are responsible for at least one goal and one performance measure. 
+
+Currently, there is no centralized reporting system to collect, track, analyze, or produce progress reports to quickly assess strategy effectiveness, target gaps, or documentation. All reporting is done manually through email and recorded in an Excel spreadsheet. This leads to increased risk for reporting mistakes via transference, a reporting lag-time of five weeks, and difficulty measuring progress for the reporting process. 
+
+Additionally, there are no established standards of practice (SOPs), procedures, or documentation. This lack of standardization and accountability leads to confusion among staff, increased risk for fraudulent reporting, increase of reporting lag-time, and decrease in data validation. 
+
+Furthermore, lack of centralized reporting and procedures inadvertently creates an environment where all formal reports are produced ad hoc. This leads to inconsistent reporting and decreases government transparency on agency performance. 
+Another aspect to note is that some internal divisions have separate reporting methods and software that may or may not track the strategic plan goals and performance measures. This leads to duplication of existing work, which is inherently inefficient and possibly leads to an increased risk of data inconsistency. 
+
+In summary, while the agency’s strategic plan goals and performance measures are sound, there is no reporting structure, infrastructure, or enforced procedures that enable the proper monitoring (and thus, success) of this plan.
+## System Solution
+A centralized reporting system would solve many of the stated issues. This system must have the ability to accept individual user input, store these responses, and extrapolate certain answers into a managed database. It must also contain a mechanism to create and store both ad hoc and scheduled, auto-generated reports (e.g., cron jobs). This system must incorporate a real-time dashboard with access permissions based on user information. Ambitious components include APIs to other divisions’ internal reporting systems or databases; and managing HIPAA-protected data through deidentification procedures and/or separate servers with an increased physical security aspect.
+
+Non-technical system components include written and enforced SOPs, procedures, organization policies, and documentation that are “audit-ready.” Specifically, change request processes must be established for knowledge transference and organization succession. All performance measures should have extensive documentation on reliability, accuracy, validity, and calculation methods to ensure consistent measurement and prevent data manipulation. If necessary, strategic plan goals should incorporate divisional work plans and operational plans down to the tactic-level on a GOST model (goals, objectives, strategies, tactics).
+
+At present, I foresee this centralized reporting system to include the following software components: web-based form for intake, ETL pipeline to a managed database, data analysis software, live web-based dashboards, user management, custom APIs, file management, and scheduled jobs. In addition, it may be beneficial to implement a monitoring system to measure effectiveness, efficiencies, and validation processes. It may also be beneficial to implement a way to conduct testing, troubleshooting, and system updates.
+## Connection
+I am interested in exploring this use case because I have direct experience with this problem. I work in internal operations and the lack of standardized reporting causes many issues, including the ones I’ve outlined in this essay. These reporting systems exist as an off-the-shelf product, but there is no budget nor planned budget to purchase these systems. I am interested in creating this system in a Microsoft environment using Power App, Power Automate, SharePoint, Tableau, and AWS. 
