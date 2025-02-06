@@ -3,7 +3,7 @@
 # Performance Management System 
 ### Version 1.0
 ### Prepared by Kristella Lepak
-### Instructor: Dr. Jeffery Babb
+### Instructor: Dr. Jeffry Babb
 #### West Texas A&M University
 ---
 ## 1. Introduction
