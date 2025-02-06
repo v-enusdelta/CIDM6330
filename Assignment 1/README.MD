@@ -28,6 +28,14 @@ The purpose of this document is to build a web-based system to collect, track, a
 ---
 ## 2. Requirements
 ### 2.1 User Stories
+As a reporter I want to get automated emails so that I can stay on top of my reporting duties.
+As a reporter I want the option to report as little or as many of my assigned requests so that I have more flexibility.
+As an analyst I want organized data so that I can easily create progress charts.
+As an analyst I want live graphs so that I can spend more time on analysis.
+As a director I want to create customized views of progress updates so that I can deliver batch updates to executive leadership.
+As a director I want automatic requests to reporters so that I don’t create and manage email report updates.
+As an executive I want easy access to view overall progress of internal priorities so that I can delegate resources to underperforming areas.
+As a staff member I want digestible information so that I can connect my work with the agency priorities.
 ### 2.2 Use Cases
 ### 2.3 Features
 ### 2.4 Gherkin Validation
