@@ -11,8 +11,8 @@
 The purpose of this document is to build a web-based system to collect, track, analyze and produce reports about internal progress on a public health agency strategic plan.
 ### 1.2 Table of Contents
 1. Introduction
-  1. Purpose
-  2. Table of Contents
+  1.1 Purpose
+  1.2 Table of Contents
 2. Requirements Statements
   2.1 User Stories
   2.2 Use Cases
