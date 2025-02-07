@@ -1,6 +1,6 @@
 # Software Requirements Specification (SRS) 
 ## for 
-# Performance Management System 
+# Centralized Reporting System 
 ### Version 1.0
 ### Prepared by Kristella Lepak
 ### Instructor: Dr. Jeffry Babb
