@@ -43,10 +43,16 @@ Figure 1. Business use case. Reporter view all assigned items.
 | User Intention | System Responsibility |
 | --- | --- |
 | Reporter logs into system view | Verifies login credentials |
-| Selects ‘See All Assigned’ | Loads a cached query view of all assigned items |
+| Selects ‘All Assignments’ | Loads a cached query view of all assigned items |
 | Exits view | Return to user home page | 
 ### 2.3 Features
 ### 2.4 Gherkin Validation
+**Feature:** Reporter-users can see all assigned items they are responsible for updating
+
+**Scenario:** Reporter-users see only their assigned items  
+  Given Repoter A is assigned items  
+  When Reporter A selects ‘All Assignments’  
+  Then Reporter A sees all their assigned items  
 ---
 ## 3. Specifications
 ### 3.1 Concept
