@@ -36,8 +36,11 @@ As an admin, I want to send automatic email requests for updates to reporters so
 
 ### 2.2 Use Cases
 Figure 1. Business use case. Reporter view all assigned items.
+
 **ID:** CU 01
+
 **Preconditions:** User is assigned to items.
+
 **Postconditions:** None
 
 | User Intention | System Responsibility |
