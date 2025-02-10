@@ -35,7 +35,6 @@ As an analyst, I want to see live updates on all selected items so that I can id
 As an admin, I want to send automatic email requests for updates to reporters so that I do not have to send manual email requests.
 
 ### 2.2 Use Cases
-Figure 1. Business use case. Reporter view all assigned items.  
 **ID:** CU 01  
 **Preconditions:** User is assigned to items.  
 **Postconditions:** None  
