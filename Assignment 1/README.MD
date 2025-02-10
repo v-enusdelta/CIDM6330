@@ -28,22 +28,23 @@ The purpose of this document is to build a web-based system to collect, track, a
 ---
 ## 2. Requirements
 ### 2.1 User Stories
-As a reporter I want to get automated emails so that I can stay on top of my reporting duties.
+As a reporter, I want to see all the items I am responsible for updating so that I am aware of my responsibilities.
 
-As a reporter I want the option to report as little or as many of my assigned requests so that I have more flexibility.
+As an analyst, I want to see live updates on all selected items so that I can identify items that need attention.
 
-As an analyst I want organized data so that I can easily create progress charts.
+As an admin, I want to send automatic email requests for updates to reporters so that I do not have to send manual email requests.
 
-As an analyst I want live graphs so that I can spend more time on analysis.
-
-As a director I want to create customized views of progress updates so that I can deliver batch updates to executive leadership.
-
-As a director I want automatic requests to reporters so that I don’t create and manage email report updates.
-
-As an executive I want easy access to view overall progress of internal priorities so that I can delegate resources to underperforming areas.
-
-As a staff member I want digestible information so that I can connect my work with the agency priorities.
 ### 2.2 Use Cases
+Figure 1. Business use case. Reporter view all assigned items.
+**ID:** CU 01
+**Preconditions:** User is assigned to items.
+**Postconditions:** None
+
+| User Intention | System Responsibility |
+| --- | --- |
+| Reporter logs into system view | Verifies login credentials |
+| Selects ‘See All Assigned’ | Loads a cached query view of all assigned items |
+| Exits view | Return to user home page | 
 ### 2.3 Features
 ### 2.4 Gherkin Validation
 ---
