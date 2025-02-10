@@ -58,6 +58,15 @@ As an admin, I want to send automatic email requests for updates to reporters so
 ---
 ## 3. Specifications
 ### 3.1 Concept
+The **Centralized Reporting System** is a web-based, object-oriented system that captures information related to a public health agency’s strategic priorities in the form of items. Items are either created or mirrored from other data sources (e.g., electronic health records, federal grant reporting, human resources, etc.) and assigned to reporters to provide periodic updates. There are four major modules: reporting system, database, web portal, and application administration (admin). Each module is integrated by a variety of tools including data pipelines, APIs, external data analysis software, scheduled jobs, and web applications. A critical component of this system are customized APIs which connect to a variety of agency databases that respect HIPAA controls and security.
+
+The goals of this system are to:  
+* Streamline and automate reporting from siloed data sources by creating data pipelines to a centralized server.
+* Enable transparency on progress of agency strategic priorities by creating dashboards and reports
+* Automate reporting for non-mirrored data sources by creating an email request system
+* Enable data analysts to use external tools on the centralized database by creating an API
+* Create and maintain a flexible history of progress on agency strategic priorities by enabling custom-views, re-labeling, and data inventory controls
+
 ### 3.2 UX Notes
 ### 3.3 Interfaces (Controls)
 ### 3.4 Behaviors
