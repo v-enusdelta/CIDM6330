@@ -48,9 +48,13 @@ Figure 1. Business use case. Reporter view all assigned items.
 ### 2.3 Features
 ### 2.4 Gherkin Validation
 **Feature:** Reporter-users can see all assigned items they are responsible for updating  
+
 **Scenario:** Reporter-users see only their assigned items  
+
 Given Repoter A is assigned items  
+
 When Reporter A selects ‘All Assignments’  
+
 Then Reporter A sees all their assigned items  
 ---
 ## 3. Specifications
