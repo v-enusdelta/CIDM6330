@@ -50,6 +50,7 @@ Figure 1. Business use case. Reporter view all assigned items.
 **Feature:** Reporter-users can see all assigned items they are responsible for updating
 
 **Scenario:** Reporter-users see only their assigned items
+
 ---
 ## 3. Specifications
 ### 3.1 Concept
