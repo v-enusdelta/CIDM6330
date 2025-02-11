@@ -81,6 +81,15 @@ UX Activity Diagram for CU 01
   - `All Assignments` (Button) → Displays all assigned items on a separate webpage.
   - `Update` (Button) → Submits a progress update to an item.
 
+**2. Administrator**
+  - `Assign` (Button) → Assigns an item to the specified user.
+  - `Create Item` (Form) → Creates a new item.
+  - `Request External Data` (Form) → Creates a request to an external data source
+  - `Import External Data` (Button) → Initiates process to import a data source. 
+
+**3. Analyst**
+  - `Create Dashboard` (Form) → Creates a blank, new dashboard.
+  - `Export` (Button) → Exports data into a variety of file types.
 
 ### 3.4 Behaviors
 #### 3.4.1 [Feature/Package A]
