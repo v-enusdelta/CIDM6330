@@ -68,6 +68,9 @@ The goals of this system are to:
 * Create and maintain a flexible history of progress on agency strategic priorities by enabling custom-views, re-labeling, and data inventory controls
 
 ### 3.2 UX Notes
+UX Activity Diagram for CU 01
+![UX Activity diagram for CU 01](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/ux-flow-cu01.jpg)
+
 ### 3.3 Interfaces (Controls)
 ### 3.4 Behaviors
 #### 3.4.1 [Feature/Package A]
