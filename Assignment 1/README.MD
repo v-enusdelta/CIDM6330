@@ -41,19 +41,39 @@ As an admin, I want to send automatic email requests for updates to reporters so
 
 | User Intention | System Responsibility |
 | --- | --- |
-| Reporter logs into system view | Verifies login credentials |
+| Reporter logs into web portal  | Verifies login credentials |
 | Selects ‘All Assignments’ | Loads a cached query view of all assigned items |
 | Exits view | Return to user home page | 
+
+**ID:** CU 02  
+**Preconditions:** Item exists, reporter-role user exists.    
+**Postconditions:** Item is assigned to a reporter  
+
+| User Intention | System Responsibility |
+| --- | --- |
+| Admin logs into web portal view | Verifies login credentials |
+| Selects an existing item with no assigned-reporter | Loads details for the item |
+| Selects a reporter-user from a drop-down field | Loads user names |
+| Selects 'Assign' | Adds the userID to the field 'assigned_to' |
+
 ### 2.3 Features
-* Reporter-users can see all assigned items they are responsible for updating
+* Reporter-roles can see all assigned items they are responsible for updating
+* Admin-roles can assign items to reporter-roles
 
 ### 2.4 Gherkin Validation
-**Feature:** Reporter-users can see all assigned items they are responsible for updating
+**Feature:** Reporter-roles can see all assigned items they are responsible for updating
 
-**Scenario:** Reporter-users see only their assigned items  
+**Scenario:** Reporter-roles see only their assigned items  
   Given Repoter A is assigned items  
   When Reporter A selects ‘All Assignments’  
   Then Reporter A sees all their assigned items
+
+**Feature:** Admin-roles can assign items to reporter-roles
+
+**Scenario:** Admin-roles assign items to a reporter  
+  Given an Item exists and a user exists with reporter-role permissions  
+  When Admin A selects ‘Assign’ to a specified user  
+  Then the Item will be assigned to that specific user
 
 ---
 ## 3. Specifications
@@ -73,8 +93,8 @@ UX Activity Diagram for CU 01
 
 ### 3.3 Interfaces (Controls)
 #### Wireframe Diagrams for CU 01
-![CU01 wireframe diagram home screen](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe01.drawio.png)
-![CU01 wireframe diagram all assignments](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe02.drawio.png)
+  ![CU01 wireframe diagram home screen](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe01.drawio.png)
+  ![CU01 wireframe diagram all assignments](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe02.drawio.png)
 
 #### User Controls by Role
 **1. Reporter**
@@ -92,5 +112,5 @@ UX Activity Diagram for CU 01
   - `Export` (Button) → Exports data into a variety of file types.
 
 ### 3.4 Behaviors
-#### 3.4.1 [Feature/Package A]
-#### 3.4.2 [Feature/Package B]
+#### 3.4.1 Reporter-roles can see all assigned items they are responsible for updating (CU 01)
+#### 3.4.2 Admin-roles can assign items to reporter-roles (CU 02)
