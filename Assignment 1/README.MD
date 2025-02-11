@@ -72,6 +72,16 @@ UX Activity Diagram for CU 01
 ![UX Activity diagram for CU 01](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/ux-flow-cu01.jpg)
 
 ### 3.3 Interfaces (Controls)
+#### Wireframe Diagrams for CU 01
+![CU01 wireframe diagram home screen](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe01.drawio.png)
+![CU01 wireframe diagram all assignments](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-uiWireframe02.drawio.png)
+
+#### User Controls by Role
+**1. Reporter**
+  - `All Assignments` (Button) → Displays all assigned items on a separate webpage.
+  - `Update` (Button) → Submits a progress update to an item.
+
+
 ### 3.4 Behaviors
 #### 3.4.1 [Feature/Package A]
 #### 3.4.2 [Feature/Package B]
