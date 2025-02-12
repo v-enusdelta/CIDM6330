@@ -113,4 +113,6 @@ UX Activity Diagram for CU 01
 
 ### 3.4 Behaviors
 #### 3.4.1 Reporter-roles can see all assigned items they are responsible for updating (CU 01)
+  ![CU01 class diagram](https://github.com/v-enusdelta/CIDM6330/blob/main/Assignment%201/cu01-classdiagram.drawio.png)
+
 #### 3.4.2 Admin-roles can assign items to reporter-roles (CU 02)
