@@ -33,7 +33,7 @@ def read_item(user_id: int):
     return {"user_id": user_id, "user": users[str(user_id)]}
 
 
-@app.put("/users/{user_id}")
+@app.put("/users/{user_id}") # Update user info
 def update_item(user_id: int, user: User):
     users[str(user_id)] = user
     return {"user_id": user_id, "users": users[str(user_id)]}
