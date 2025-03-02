@@ -1,39 +1,22 @@
 from typing import Union
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from models import UserPayload
 
 app = FastAPI()
 
-class User(BaseModel):
-    userid: int
-    username: str
-    password: str
-    email: str
-    isadmin: bool
-    isreporter: bool
-    isanalyst: bool
-    isviewer:bool
+user_list: dict[int, UserPayload] = {}
 
-
-users = {
-    "1": User(userid=1,username="fakeuser1",password="fakepassword1",email="fake1@email.com",isadmin=True,isreporter=True,isanalyst=False,isviewer=True),
-    "2": User(userid=1,username="fakeuser2",password="fakepassword2",email="fake2@email.com",isadmin=False,isreporter=False,isanalyst=False,isviewer=True),
-    "3": User(userid=1,username="fakeuser3",password="fakepassword3",email="fake3@email.com",isadmin=False,isreporter=True,isanalyst=False,isviewer=True),
-    "4": User(userid=1,username="fakeuser4",password="fakepassword4",email="fake4@email.com",isadmin=False,isreporter=False,isanalyst=False,isviewer=True),
-}
-
-
+# GET / :Initial system message
 @app.get("/")
-def read_root():
-    return {"I left everything I own in One Piece": "Now you just have to find it."}
+def read_root() -> dict[str, str]:
+    return {"message":"System available"}
 
+# GET /users: Returns a list of all known users
+@app.get("/users")
+def get_all_users() -> dict[int, UserPayload]:
+    return user_list
 
-@app.get("/users/{user_id}")
-def read_item(user_id: int):
-    return {"user_id": user_id, "user": users[str(user_id)]}
-
-
-@app.put("/users/{user_id}") # Update user info
-def update_item(user_id: int, user: User):
-    users[str(user_id)] = user
-    return {"user_id": user_id, "users": users[str(user_id)]}
+# POST /users/add: Add a new user
+def add_user():
+    
