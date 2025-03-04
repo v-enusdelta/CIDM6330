@@ -2,7 +2,8 @@ from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI()
+#This variable has been intentionally broken to use the test folder instead. To fix it, remove '2' from the variable name.
+app2 = FastAPI()
 
 class User(BaseModel):
     userid: int

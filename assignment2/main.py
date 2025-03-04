@@ -3,7 +3,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from models import UserPayload
 
-app = FastAPI()
+#This variable has been intentionally broken to use the test folder instead. To fix it, remove '1' from the variable name.
+app1 = FastAPI()
 
 user_list: dict[int, UserPayload] = {}
 
