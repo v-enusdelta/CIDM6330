@@ -39,12 +39,14 @@ def get_user(user_id: int) -> dict[str, User]:
 @app.put("/users/{user_id}")
 def update_user(user_id: int, user: User):
     user_list[str(user_id)] = user
-    return ["user_id": user_id, "users": users[str(user_id)]]
+    return ["user_id": user_id, "users": user_list[str(user_id)]]
 
 # GET /users : Return a list of all users and user information
-@app.get("/users")
-def list_users() -> dict[str, dict[int, User]]:
-    return user_list
+@app.get("/users/{user_id}")
+def get_user(user_id: int) -> dict[str, User]:
+    if user_id not in user_list:
+        raise HTTPException(status_code=404, detail="UserID not found.")
+    return {"user": user_list[user_id]}
 
 # DELETE /users/{username} : Deletes a user by their username
 @app.delete("/users/{username}")
