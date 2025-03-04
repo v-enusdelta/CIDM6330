@@ -1,73 +1,55 @@
 from fastapi import FastAPI, HTTPException
 
-from models import ItemPayload
+from models import User
 
 app = FastAPI()
 
-grocery_list: dict[int, ItemPayload] = {}
+user_list: dict[str, User] = {}
 
 @app.get ("/")
 def read_root():
-    return {"I left everything I own in One Piece": "Now you just have to find it."}
+    return {"Message": "System initialized"}
 
-# Route to add an item
-@app.post("/items/{item_name}/{quantity}")
-def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
-    if quantity <= 0:
-        raise HTTPException(status_code=400, detail="Quantity must be greater than 0.")
-    # if item already exists, we'll just add the quantity.
-    # get all item names
-    items_ids: dict[str, int] = {
-        item.item_name: item.item_id if item.item_id is not None else 0
-        for item in grocery_list.values()
-    }
-    if item_name in items_ids.keys():
-        # get index of item_name in item_ids, which is the item_id
-        item_id: int = items_ids[item_name]
-        grocery_list[item_id].quantity += quantity
-    # otherwise, create a new item
-    else:
-        # generate an ID for the item based on the highest ID in the grocery_list
-        item_id: int = max(grocery_list.keys()) + 1 if grocery_list else 0
-        grocery_list[item_id] = ItemPayload(
-            item_id=item_id, item_name=item_name, quantity=quantity
-        )
+# POST /users/{username} : Add a new user
+@app.post("/users/{username}")
+def add_user(username: str) -> dict[str, User]:
+    existing_usernames = {user.username for user in user_list.values()}
+    if username in existing_usernames:
+        raise HTTPException(status_code=400, detail="Username already taken.")
 
-    return {"item": grocery_list[item_id]}
+    # Generate a unique user_id
+    user_id = max(user_list.keys(), default=0) + 1 if user_list else 0
 
+    # Create a new UserPayload object
+    new_user = User(user_id=user_id, username=username)
 
-# Route to list a specific item by ID
-@app.get("/items/{item_id}")
-def list_item(item_id: int) -> dict[str, ItemPayload]:
-    if item_id not in grocery_list:
-        raise HTTPException(status_code=404, detail="Item not found.")
-    return {"item": grocery_list[item_id]}
+    # Add the new user to user_list
+    user_list[user_id] = new_user
 
+    return {"user": new_user}
 
-# Route to list all items
-@app.get("/items")
-def list_items() -> dict[str, dict[int, ItemPayload]]:
-    return {"items": grocery_list}
+# GET /users/{user_id} : Return user information by user_id
+@app.get("/users/{user_id}")
+def get_user(user_id: int) -> dict[str, User]:
+    if user_id not in user_list:
+        raise HTTPException(status_code=404, detail="UserID not found.")
+    return {"item": user_list[user_id]}
 
+# PUT /users/{user_id} : Update user info for a specific user
+@app.put("/users/{user_id}")
+def update_user(user_id: int, user: User):
+    user_list[str(user_id)] = user
+    return ["user_id": user_id, "users": users[str(user_id)]]
 
-# Route to delete a specific item by ID
-@app.delete("/items/{item_id}")
-def delete_item(item_id: int) -> dict[str, str]:
-    if item_id not in grocery_list:
-        raise HTTPException(status_code=404, detail="Item not found.")
-    del grocery_list[item_id]
-    return {"result": "Item deleted."}
+# GET /users : Return a list of all users and user information
+@app.get("/users")
+def list_users() -> dict[str, dict[int, User]]:
+    return user_list
 
-
-# Route to remove some quantity of a specific item by ID
-@app.delete("/items/{item_id}/{quantity}")
-def remove_quantity(item_id: int, quantity: int) -> dict[str, str]:
-    if item_id not in grocery_list:
-        raise HTTPException(status_code=404, detail="Item not found.")
-    # if quantity to be removed is higher or equal to item's quantity, delete the item
-    if grocery_list[item_id].quantity <= quantity:
-        del grocery_list[item_id]
-        return {"result": "Item deleted."}
-    else:
-        grocery_list[item_id].quantity -= quantity
-    return {"result": f"{quantity} items removed."}
+# DELETE /users/{username} : Deletes a user by their username
+@app.delete("/users/{username}")
+def delete_user(username: str) -> dict[str, str]:
+    if username not in user_list:
+        raise HTTPException(status_code=404, detail="Username not found.")
+    del user_list[username]
+    return {"result": "Username deleted."}
