@@ -1,3 +1,5 @@
+# Updates
+3/7/25 Note: The codeblock in the FastAPI section has been updated with main.py from /assignment2-new
 # ERD
 The following ERD captures the relationships between a user class, their roles and permissions, and how they interact with the item class.
 
@@ -10,65 +12,66 @@ Users interact with items through Events, which provide a layer of abstraction a
 
 # FastAPI
 
-All final code is contained in the following path CIDM6330/assignment2/main1 and executed with the command `uvicode main1:app --reload` in Git Bash
+All final code is contained in the following path CIDM6330/assignment2-new/main.py and executed with the command `uvicode main:app --reload` in Git Bash
 
 This code focuses on CRUD operations relevant to the User class.
 
 ```python
-from typing import Union
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
+
+from models import User
 
 app = FastAPI()
 
-class User(BaseModel):
-    userid: int
-    username: str
-    password: str
-    email: str
-    isadmin: bool
-    isreporter: bool
-    isanalyst: bool
-    isviewer:bool
+user_list: dict[int, User] = {}
 
-
-users = {
-    "1": User(userid=1,username="fakeuser1",password="fakepassword1",email="fake1@email.com",isadmin=True,isreporter=True,isanalyst=False,isviewer=True),
-    "2": User(userid=1,username="fakeuser2",password="fakepassword2",email="fake2@email.com",isadmin=False,isreporter=False,isanalyst=False,isviewer=True),
-    "3": User(userid=1,username="fakeuser3",password="fakepassword3",email="fake3@email.com",isadmin=False,isreporter=True,isanalyst=False,isviewer=True),
-    "4": User(userid=1,username="fakeuser4",password="fakepassword4",email="fake4@email.com",isadmin=False,isreporter=False,isanalyst=False,isviewer=True),
-}
-
-@app.get("/")
+@app.get ("/")
 def read_root():
-    return {"I left everything I own in One Piece": "Now you just have to find it."}
+    return {"Message": "System initialized"}
 
-# GET /users : Return a list of all known users
-@app.get("/users")
-def get_all_users():
-    return users
+# POST /users/{username} : Add a new user
+@app.post("/users/{username}")
+def add_user(username: str, user: User) -> dict[str, User]:
+    existing_usernames = {user.username for user in user_list.values()}
+    if username in existing_usernames:
+        raise HTTPException(status_code=400, detail="Username already taken.")
 
-# GET /users/{user_id} : Return information for a specific user 
+    # Generate a unique user_id
+    user_id = max(user_list.keys(), default=0) + 1 if user_list else 0
+
+    # Create a new User object
+    new_user = User(userid=userid, username=username, password=password, email=email, isadmin=isadmin, isreporter=isreporter, isanalyst=isanalyst, isviewer=isviewer)
+
+    # Add the new user to user_list
+    user_list[user_id] = new_user
+
+    return {"user": new_user}
+
+# GET /users/{user_id} : Return user information by user_id
 @app.get("/users/{user_id}")
-def read_item(user_id: int):
-    return {"user_id": user_id, "user": users[str(user_id)]}
+def get_user(user_id: int) -> dict[str, User]:
+    if user_id not in user_list:
+        raise HTTPException(status_code=404, detail="UserID not found.")
+    return {"item": user_list[user_id]}
 
 # PUT /users/{user_id} : Update user info for a specific user
 @app.put("/users/{user_id}")
-def update_item(user_id: int, user: User):
-    users[str(user_id)] = user
-    return {"user_id": user_id, "users": users[str(user_id)]}
+def update_user(user_id: int, user: User) -> dict[str, User]:
+    if user_id not in user_list:
+        raise HTTPException(status_code=404, detail="UserID not found.")
+    user_list[user_id] = user
+    return {"user": user_list[user_id]}
 
-# PUT /users/add/{user_id} : Add a new user
-@app.post("/users/add/{user_id}") 
-def add_item(user_id: int, user: User):
-    users[str(user_id)] = user
-    return {"user_id": user_id, "users": users[str(user_id)]}
+# GET /users : Return a list of all users and user information
+@app.get("/users")
+def list_users() -> dict[int, User]:
+    return user_list
 
-# PUT /users/delete/{user_id} : Add a new user
-@app.delete("/users/delete/{user_id}")
-def delete_user(user_id:int, user: User):
-    global users
-    user = [user for user in users if user.user_id != user_id]
-    return {"message": f"User {user_id} deleted successfully"}
+# DELETE /users/{username} : Deletes a user by their username
+@app.delete("/users/{username}")
+def delete_user(username: str) -> dict[str, str]:
+    if username not in user_list:
+        raise HTTPException(status_code=404, detail="Username not found.")
+    del user_list[username]
+    return {"result": "Username deleted."}
 ```
