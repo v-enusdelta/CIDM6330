@@ -10,3 +10,14 @@
 
 # Description
 This section will describe what each file name does and which part of the assignment requirements it aligns to.
+
+# Resources Used
+<https://www.geeksforgeeks.org/getting-started-with-django/>
+<https://www.geeksforgeeks.org/django-orm-inserting-updating-deleting-data/?ref=gcse>
+<https://www.geeksforgeeks.org/how-to-create-a-basic-api-using-django-rest-framework/>
+
+# Resources (Plan to use)
+<https://www.django-rest-framework.org/tutorial/quickstart/>
+<https://www.shecodes.io/athena/9722-implement-repository-for-model-with-django-rest-framework#google_vignette>
+<https://www.reddit.com/r/django/comments/d0596f/orm_vs_orm_repository_pattern/>
+<https://medium.com/@slowmoe329/repository-design-pattern-in-django-a-clean-and-scalable-approach-a94d2645fd77>
