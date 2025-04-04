@@ -4,7 +4,7 @@ from .models import User, Session, Event
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['userid', 'username', 'password', 'email', 'isadmin', 'isreporter', 'isanalist', 'isviewer']
+        fields = ['userid', 'username', 'password', 'email', 'isadmin', 'isreporter', 'isanalyst', 'isviewer']
         extra_kwargs = {'password': {'write_only': True}}
 
 class SessionSerializer(serializers.ModelSerializer):
