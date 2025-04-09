@@ -17,6 +17,7 @@
 This section will describe what each file name does and which part of the assignment requirements it aligns to.
 
 # Resources Used
+<https://realpython.com/asynchronous-tasks-with-django-and-celery/>
 
 ## Resources Planned
 <https://docs.djangoproject.com/en/5.1/topics/testing/>
