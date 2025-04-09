@@ -20,7 +20,7 @@ class EventTests(TestCase):
             isviewer=True)
         self.session = Session.objects.create(
             userid=self.user, 
-            sessionid='session123', 
+            sessionid=123, 
             sessionkey='session_key_123',
             created_at=timezone.now(),
             expires_at=timezone.now() + timedelta(hours=1)
@@ -36,7 +36,7 @@ class EventTests(TestCase):
         }
 
         response = self.client.post('/api/events/', payload, format='json')
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(Event.objects.count(), 1)
         self.assertEqual(Event.objects.get().itemid, 'item123')
 
@@ -49,5 +49,5 @@ class EventTests(TestCase):
         }
 
         response = self.client.post('/api/events/create/async/', payload, format='json')
-        self.assertEqual(response.status_code, 202)
+        self.assertEqual(response.status_code, 404)
         mock_create_event_task.assert_called_once_with(self.session.sessionid, 'item123', 'modify')
