@@ -17,9 +17,13 @@
 This section will describe what each file name does and which part of the assignment requirements it aligns to.
 
 # Resources Used
+<https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html>
+
+<https://github.com/ahuimanu/CIDM6330/blob/SPRING2025/CIDM6330-Spring2025/Evolution_03_Event_Driven_Architectures/README.MD>
+
 <https://realpython.com/asynchronous-tasks-with-django-and-celery/>
+
+<https://djangocentral.com/how-to-use-celery-with-django/>
 
 ## Resources Planned
 <https://docs.djangoproject.com/en/5.1/topics/testing/>
-
-<https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html>
