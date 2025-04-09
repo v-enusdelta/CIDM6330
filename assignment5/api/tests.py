@@ -19,7 +19,7 @@ class EventTests(TestCase):
             isanalyst=False,
             isviewer=True)
         self.session = Session.objects.create(
-            userid=self.user.userid, 
+            userid=self.user, 
             sessionid='session123', 
             sessionkey='session_key_123',
             created_at=timezone.now(),
