@@ -11,5 +11,5 @@ router.register(r'events', EventViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('', include('rest_framework.urls')),
-    path('events/create', EventCreateView.as_view(), name='event-create'),
+    path('events/create/async/', EventCreateView.as_view(), name='event-create-async'),
 ]
